@@ -37,7 +37,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh; /* 화면 전체 높이 만큼 설정 */
+		height: 100vh;
 		text-align: center;
 	}
 
@@ -60,7 +60,7 @@
 		color: black;
 		font-size: 30px;
 		font-weight: bold;
-		white-space: nowrap; /* 줄 바꿈 없이 한 줄에 표시 */
+		white-space: nowrap;
 	}
 
 	.character-images {
