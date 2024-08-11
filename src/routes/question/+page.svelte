@@ -26,8 +26,8 @@
 	}
 
 	function nextQuestion() {
-		currentQuestionIndex++;
-		if (currentQuestionIndex < $questionStore.length) {
+		if (currentQuestionIndex < $questionStore.length - 1) {
+			currentQuestionIndex++;
 			currentQuestion = $questionStore[currentQuestionIndex];
 		} else {
 			window.location.href = '/result';
@@ -122,11 +122,11 @@
 		margin-top: 25px;
 	}
 	.button-container {
-		display: flex; 
-		flex-direction: column; 
-		justify-content: center; 
-		align-items: center; 
-		margin-top: 0.5rem; 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 0.5rem;
 	}
 	button {
 		margin-top: 1rem;
