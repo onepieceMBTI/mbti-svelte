@@ -6,7 +6,7 @@
 
 	let currentQuestionIndex = 0;
 	let currentQuestion: Question = {
-		question: '',
+		question: [],
 		image: '',
 		answers: []
 	};
@@ -30,7 +30,7 @@
 		if (currentQuestionIndex < $questionStore.length) {
 			currentQuestion = $questionStore[currentQuestionIndex];
 		} else {
-			console.log('모든 질문이 끝났습니다.');
+			window.location.href = '/result';
 		}
 	}
 
@@ -77,7 +77,7 @@
 	}
 	.question-info {
 		position: absolute;
-		top: 13%;
+		top: 14%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		text-align: center;
@@ -89,8 +89,8 @@
 	}
 
 	.progress-bar {
-		width: 300px;
-		max-width: 300px;
+		width: 365px;
+		max-width: 365px;
 		height: 40px;
 		background-color: #e0e0e0;
 		border-radius: 8px;
@@ -103,7 +103,7 @@
 	}
 	.question {
 		position: absolute;
-		top: 53%;
+		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: black;
@@ -114,12 +114,12 @@
 	.question img {
 		width: 100%;
 		height: auto;
-		max-width: 300px;
+		max-width: 340px;
 	}
 	.question-image {
 		height: auto;
 		max-width: 300px;
-		margin-top: 20px;
+		margin-top: 25px;
 	}
 	.button-container {
 		display: flex; 
@@ -131,11 +131,11 @@
 	button {
 		margin-top: 1rem;
 		height: 85px;
-		width: 310px;
-		padding: 1rem 1rem;
-		font-size: 16px;
+		width: 365px;
+		padding: 1rem 2rem;
+		font-size: 18px;
 		font-weight: bold;
-		background-color: rgb(188, 188, 188);
+		background-color: rgb(219, 219, 219);
 		color: black;
 		cursor: pointer;
 		border: none;
