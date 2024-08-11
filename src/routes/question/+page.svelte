@@ -10,6 +10,7 @@
 		image: '',
 		answers: []
 	};
+	const totalQuestions = $questionStore.length;
 
 	let unsubscribe = questionStore.subscribe((questions: Question[]) => {
 		currentQuestion = questions[currentQuestionIndex];
@@ -39,11 +40,22 @@
 </script>
 
 <div class="container">
+	<div class="question-info">
+		<div class="question-number">
+			{currentQuestionIndex + 1} / {totalQuestions}
+		</div>
+		<div class="progress-bar">
+			<div
+				class="progress"
+				style="width: {((currentQuestionIndex + 1) / totalQuestions) * 100}%;"
+			></div>
+		</div>
+	</div>
 	<div class="question">
 		{#each currentQuestion.question as line}
 			<div>{line}</div>
 		{/each}
-		<img src={currentQuestion.image} alt="Question Image" class="question-image"/>
+		<img src={currentQuestion.image} alt="Question Image" class="question-image" />
 		<div class="answers">
 			<div class="button-container">
 				{#each currentQuestion.answers as answer}
@@ -63,14 +75,41 @@
 		height: 100vh;
 		text-align: center;
 	}
+	.question-info {
+		position: absolute;
+		top: 13%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		color: black;
+	}
+	.question-number {
+		font-size: 23px;
+		margin-bottom: 8px;
+	}
+
+	.progress-bar {
+		width: 300px;
+		max-width: 300px;
+		height: 40px;
+		background-color: #e0e0e0;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	.progress {
+		height: 100%;
+		background-color: black;
+	}
 	.question {
 		position: absolute;
-		top: 50%;
+		top: 53%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: black;
 		font-size: 23px;
 		font-weight: bold;
+		margin-top: 15px;
 	}
 	.question img {
 		width: 100%;
@@ -83,10 +122,11 @@
 		margin-top: 20px;
 	}
 	.button-container {
-		display: center;
-		flex-direction: column;
-		justify-content: center;
-		margin-top: 1rem;
+		display: flex; 
+		flex-direction: column; 
+		justify-content: center; 
+		align-items: center; 
+		margin-top: 0.5rem; 
 	}
 	button {
 		margin-top: 1rem;
