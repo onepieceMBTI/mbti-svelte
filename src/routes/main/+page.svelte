@@ -79,12 +79,12 @@
 		margin-top: 2rem;
 		padding: 1rem 2rem;
 		font-size: 25px;
-		background-color: grey;
+		background-color: rgb(174, 174, 174);
 		color: white;
 		border: 3.5px solid black;
-		border-radius: 5px;
+		border-radius: 10px;
 		cursor: pointer;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		box-shadow: 1px 3px 5px rgb(62, 62, 62);
 		transition: all 0.3s ease; /* 전환 효과 */
 	}
 
