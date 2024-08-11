@@ -3,7 +3,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { questionStore } from '../../lib/stores/questionStore';
 	import type { Question } from '../../lib/stores/questionStore';
-
+	//import { selectedAnswers } from '../../lib/stores/answerStore';
+	
 	let currentQuestionIndex = 0;
 	let currentQuestion: Question = {
 		question: [],
@@ -11,6 +12,7 @@
 		answers: []
 	};
 	const totalQuestions = $questionStore.length;
+	let selectedAnswers: number[] = [];
 
 	let unsubscribe = questionStore.subscribe((questions: Question[]) => {
 		currentQuestion = questions[currentQuestionIndex];
@@ -20,8 +22,9 @@
 		currentQuestion = $questionStore[currentQuestionIndex];
 	});
 
-	function selectAnswer(answer: string) {
+	function selectAnswer(answer: string, index: number) {
 		console.log(`선택한 답변: ${answer}`);
+		selectedAnswers.push(index);
 		nextQuestion();
 	}
 
@@ -30,6 +33,7 @@
 			currentQuestionIndex++;
 			currentQuestion = $questionStore[currentQuestionIndex];
 		} else {
+			console.log('모든 답안:', selectedAnswers);
 			window.location.href = '/result';
 		}
 	}
@@ -58,8 +62,8 @@
 		<img src={currentQuestion.image} alt="Question Image" class="question-image" />
 		<div class="answers">
 			<div class="button-container">
-				{#each currentQuestion.answers as answer}
-					<button on:click={() => selectAnswer(answer)}>{answer}</button>
+				{#each currentQuestion.answers as answer, i}
+					<button on:click={() => selectAnswer(answer, i)}>{answer}</button>
 				{/each}
 			</div>
 		</div>
