@@ -17,6 +17,7 @@
 
 	function startTest() {
 		window.location.href = '/question';
+		console.log('테스트 시작');
 	}
 </script>
 
