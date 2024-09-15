@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
 	import { onMount, onDestroy } from 'svelte';
 	import { questionStore } from '../../lib/stores/questionStore';
 	import type { Question } from '../../lib/stores/questionStore';
-	//import { selectedAnswers } from '../../lib/stores/answerStore';
-	
+	import { selectedAnswers } from '../../lib/stores/answerStore';
+
 	let currentQuestionIndex = 0;
 	let currentQuestion: Question = {
 		question: [],
@@ -12,7 +11,6 @@
 		answers: []
 	};
 	const totalQuestions = $questionStore.length;
-	let selectedAnswers: number[] = [];
 
 	let unsubscribe = questionStore.subscribe((questions: Question[]) => {
 		currentQuestion = questions[currentQuestionIndex];
@@ -24,7 +22,8 @@
 
 	function selectAnswer(answer: string, index: number) {
 		console.log(`선택한 답변: ${answer}`);
-		selectedAnswers.push(index);
+		$selectedAnswers.push(index);
+		console.log('userSelectedAnswers', $selectedAnswers);
 		nextQuestion();
 	}
 
@@ -33,7 +32,7 @@
 			currentQuestionIndex++;
 			currentQuestion = $questionStore[currentQuestionIndex];
 		} else {
-			console.log('모든 답안:', selectedAnswers);
+			console.log('모든 답안:', $selectedAnswers);
 			window.location.href = '/result';
 		}
 	}
@@ -81,7 +80,7 @@
 	}
 	.question-info {
 		position: absolute;
-		top: 14%;
+		top: 7%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		text-align: center;
@@ -107,7 +106,7 @@
 	}
 	.question {
 		position: absolute;
-		top: 50%;
+		top: 53%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: black;
