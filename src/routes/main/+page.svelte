@@ -2,11 +2,15 @@
 	import { onMount } from 'svelte';
 	import dialogBox from '$lib/images/dialogBox.png';
 	import mainPage from '$lib/images/mainPage.png';
+	import { selectedAnswers } from '$lib/stores/answerStore';
 
 	let imageWidth: number | undefined;
 	let imageHeight: number | undefined;
 
 	onMount(() => {
+		localStorage.removeItem('selectedAnswers');
+		selectedAnswers.set([]);
+
 		const img = new Image();
 		img.src = dialogBox;
 		img.onload = () => {
