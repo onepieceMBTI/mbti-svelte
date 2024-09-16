@@ -1,7 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { resultStore } from '$lib/stores/resultStore';
-	import { selectedAnswers } from '$lib/stores/answerStore';
 
-	console.log('selectedAnswers', $selectedAnswers);
+	let selectedAnswers: string[] = [];
+
+	onMount(() => {
+		const answers = localStorage.getItem('selectedAnswers');
+		if (answers) {
+			selectedAnswers = JSON.parse(answers) as string[];
+		}
+	});
 </script>
+
+<div>
+	<h1>Your Selected Answers</h1>
+	<ul>
+		{#each selectedAnswers as answer}
+			<li>{answer}</li>
+		{/each}
+	</ul>
+</div>
