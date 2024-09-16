@@ -21,7 +21,6 @@
 	});
 
 	function selectAnswer(answer: string, index: number) {
-		console.log(`선택한 답변: ${answer}`);
 		$selectedAnswers.push(index);
 		console.log('userSelectedAnswers', $selectedAnswers);
 		nextQuestion();
