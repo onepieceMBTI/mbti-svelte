@@ -32,6 +32,7 @@
 			currentQuestionIndex++;
 			currentQuestion = $questionStore[currentQuestionIndex];
 		} else {
+			localStorage.setItem('selectedAnswers', JSON.stringify($selectedAnswers));
 			console.log('모든 답안:', $selectedAnswers);
 			window.location.href = '/result';
 		}
